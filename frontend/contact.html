@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Buwana Tours & Travels — Contact Us</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <link href="styles.css" rel="stylesheet" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet" />
+</head>
+<body>
+  <header class="site-header">
+    <div class="brand">
+      <span class="brand-name">Buwana Tours & Travels</span>
+    </div>
+    <nav>
+      <a href="index.html">Home</a>
+      <a href="services.html">Services</a>
+      <a href="about.html">About Us</a>
+      <a href="why-srilanka.html">Why SL?</a>
+      <a class="active" href="contact.html">Contact</a>
+    </nav>
+  </header>
+
+  <main class="section">
+    <div class="section-head">
+      <h2>Contact Us</h2>
+      <p>Tell us about your trip — we’ll reply with a custom quote.</p>
+    </div>
+
+    <div class="contact-grid">
+      <form id="contactForm" class="card reveal" autocomplete="off">
+        <label>
+          Full Name
+          <input type="text" name="name" id="con-name" placeholder="Your Name" required />
+        </label>
+        <label>
+          Email
+          <input type="email" name="email" id="con-email" placeholder="you@example.com" required />
+        </label>
+        <label>
+          Phone (optional)
+          <input type="tel" name="phone" id="con-phone" placeholder="+94 ..." />
+        </label>
+        <label>
+          Interested In
+          <select name="interest" id="con-interest">
+            <option>Airport Pickups & Drops</option>
+            <option>Sigiriya & Dambulla</option>
+            <option>Yala Safari Adventure</option>
+            <option>Kandy Cultural Tour</option>
+            <option>Mirissa Beach Escape</option>
+            <option>Ella Highlands Retreat</option>
+            <option>Field Trip</option>
+            <option>Custom Itinerary</option>
+          </select>
+        </label>
+
+        <!-- Airport pickup/drop-off popup -->
+        <div id="airportOptions" style="display:none; margin-bottom:1rem;">
+          <label>
+            Select Type:
+            <select id="pickupType">
+              <option value="pickup">Pickup Only</option>
+              <option value="dropoff">Drop-off Only</option>
+              <option value="both">Both Pickup & Drop-off</option>
+            </select>
+          </label>
+        </div>
+
+        <!-- Travel Dates -->
+        <label>
+          Travel Dates
+          <input type="date" name="startDate" id="con-startDate" required />
+          <input type="date" name="endDate" id="con-endDate" required />
+        </label>
+
+        <label>
+          Message
+          <textarea name="message" id="con-message" placeholder="Dates, group size, pickup location…"></textarea>
+        </label>
+        <button type="submit" class="btn">Send Message</button>
+        <p id="contactStatus" class="status" role="status" aria-live="polite"></p>
+      </form>
+
+      <aside class="info card reveal delay-1">
+        <h3>Company Info</h3>
+        <p><strong>Buwana Tours & Travels</strong></p>
+        <p>Colombo, Sri Lanka</p>
+        <p>Email: buwanatoursandtravels@gmail.com</p>
+        <p>Phone: +94 77 788 6698 / +1 437 707 8022</p>
+        <hr />
+        <h4>Working Hours</h4>
+        <p>Daily: 7:00 AM – 10:00 PM</p>
+        <hr />
+        <h4>Why Choose Us?</h4>
+        <ul class="why">
+          <li>Trusted by families & schools (OSC)</li>
+          <li>New, comfortable vehicles</li>
+          <li>Experienced, friendly drivers</li>
+          <li>Transparent pricing</li>
+        </ul>
+      </aside>
+    </div>
+  </main>
+
+<footer class="site-footer">
+  <div class="footer-grid">
+    <div class="footer-section">
+      <h4>Buwana Tours & Travels</h4>
+      <p>Colombo, Sri Lanka</p>
+      <p>Email: buwanatoursandtravels@gmail.com</p>
+      <p>Phone: +94 77 788 6698 / +1 437 707 8022</p>
+    </div>
+    <div class="footer-section">
+      <h4>Quick Links</h4>
+      <ul>
+        <li><a href="index.html">Home</a></li>
+        <li><a href="services.html">Services</a></li>
+        <li><a href="about.html">About Us</a></li>
+        <li><a href="why-srilanka.html">Why SL?</a></li>
+        <li><a href="contact.html">Contact</a></li>
+      </ul>
+    </div>
+    <div class="footer-section">
+      <h4>Follow Us</h4>
+      <div class="social-links">
+        <a href="#" target="_blank" aria-label="Facebook">📘</a>
+        <a href="#" target="_blank" aria-label="Instagram">📸</a>
+        <a href="#" target="_blank" aria-label="Twitter">🐦</a>
+        <a href="#" target="_blank" aria-label="YouTube">▶️</a>
+      </div>
+    </div>
+  </div>
+  <p class="footer-copy">© 2025 Buwana Tours & Travels. All rights reserved.</p>
+</footer>
+
+
+  <script src="script.js"></script>
+</body>
+</html>
