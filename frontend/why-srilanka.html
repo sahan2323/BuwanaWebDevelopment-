@@ -81,35 +81,136 @@
       </div>
     </section>
 
-    <!-- ===== Global Expansion ===== -->
-    <section class="section alt reveal">
+    <!-- ===== Hiking Card (Expandable) ===== -->
+    <section class="section reveal">
       <div class="section-head">
-        <h2>Looking Ahead</h2>
-        <p>We aim to bring our trusted services worldwide and expand airport pickups beyond Sri Lanka.</p>
+        <h2>Explore Sri Lanka's Hikes</h2>
+        <p>Click the hiking card below to discover our loveliest trails with details and pictures.</p>
       </div>
-      <div class="features-grid">
-        <div class="feature reveal">
-          <div class="icon">✈️</div>
-          <h3>International Airport Pickups</h3>
-          <p>Planning to offer reliable airport transfers in India, Italy, England, Canada, Australia, and more.</p>
+
+      <div class="card-grid">
+        <!-- Main expandable card -->
+        <div class="card clickable" id="hikingCard">
+          <img src="images/hiking-eye.jpg" alt="Hiking Overview" />
+          <div class="card-body">
+            <h3>🏞️ Hiking Adventures</h3>
+            <p>Click to explore the most scenic trails in Sri Lanka.</p>
+          </div>
         </div>
-        <div class="feature reveal delay-1">
-          <div class="icon">🌍</div>
-          <h3>Global Tours</h3>
-          <p>Curated travel experiences for international travelers, from sightseeing to adventure packages.</p>
+      </div>
+
+      <!-- Hidden detailed hikes -->
+      <div class="card-grid" id="hikesList" style="display:none; margin-top:1.5rem;">
+        <div class="card reveal">
+          <img src="images/yahangala.jpg" alt="Yahangala Hike" />
+          <div class="card-body">
+            <h3>Yahangala</h3>
+            <p>Stunning ridge trails with panoramic views and peaceful forest surroundings.</p>
+          </div>
         </div>
-        <div class="feature reveal delay-2">
-          <div class="icon">🤝</div>
-          <h3>Partnerships & Growth</h3>
-          <p>Collaborating with travel agencies and local operators worldwide to ensure seamless trips.</p>
+        <div class="card reveal delay-1">
+          <img src="images/knuckles.jpg" alt="Knuckles Mountain Range" />
+          <div class="card-body">
+            <h3>Knuckles</h3>
+            <p>Remote trekking with rich biodiversity, rivers, and misty peaks.</p>
+          </div>
         </div>
-        <div class="feature reveal">
-          <div class="icon">🏆</div>
-          <h3>Excellence First</h3>
-          <p>Our commitment remains: punctuality, comfort, and memorable experiences for all travelers.</p>
+        <div class="card reveal delay-2">
+          <img src="images/kirigalpotta.jpg" alt="Kirigalpotta Hike" />
+          <div class="card-body">
+            <h3>Kirigalpotta</h3>
+            <p>Second highest peak in Sri Lanka with panoramic views over Horton Plains.</p>
+          </div>
+        </div>
+        <div class="card reveal">
+          <img src="images/hanthana.jpg" alt="Hanthana Hike" />
+          <div class="card-body">
+            <h3>Hanthana</h3>
+            <p>Popular near Kandy, offering rolling hills, tea estates, and stunning sunset views.</p>
+          </div>
+        </div>
+        <div class="card reveal delay-1">
+          <img src="images/alagalla.jpg" alt="Alagalla Hike" />
+          <div class="card-body">
+            <h3>Alagalla</h3>
+            <p>Challenging hike with rewarding views of surrounding mountains and valleys.</p>
+          </div>
+        </div>
+        <div class="card reveal delay-2">
+          <img src="images/namunukula.jpg" alt="Namunukula Hike" />
+          <div class="card-body">
+            <h3>Namunukula</h3>
+            <p>Beautiful trail with misty mountains, tea estates, and spectacular sunrise vistas.</p>
+          </div>
         </div>
       </div>
     </section>
+
+      <!-- ===== Scenic Beaches Card (Expandable) ===== -->
+<section class="section reveal">
+  <div class="section-head">
+    <h2>Scenic Beaches of Sri Lanka</h2>
+    <p>Click the beach card below to explore Sri Lanka’s most beautiful beaches with pictures.</p>
+  </div>
+
+  <div class="card-grid">
+    <!-- Main expandable beach card -->
+    <div class="card clickable" id="beachCard">
+      <img src="images/beach-eye.jpg" alt="Beaches Overview" />
+      <div class="card-body">
+        <h3>🏖️ Top Beaches</h3>
+        <p>Click to explore Sri Lanka’s most scenic beaches.</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- Hidden detailed beaches -->
+  <div class="card-grid" id="beachesList" style="display:none; margin-top:1.5rem;">
+    <div class="card reveal">
+      <img src="images/coconut-tree-hill.jpg" alt="Coconut Tree Hill Mirissa" />
+      <div class="card-body">
+        <h3>Coconut Tree Hill, Mirissa</h3>
+        <p>Iconic view with swaying coconut palms and stunning ocean horizon.</p>
+      </div>
+    </div>
+    <div class="card reveal delay-1">
+      <img src="images/arugam-bay.jpg" alt="Arugam Bay" />
+      <div class="card-body">
+        <h3>Arugam Bay</h3>
+        <p>Famous for surfing, long sandy beaches, and relaxing vibes.</p>
+      </div>
+    </div>
+    <div class="card reveal delay-2">
+      <img src="images/hikkaduwa.jpg" alt="Hikkaduwa Beach" />
+      <div class="card-body">
+        <h3>Hikkaduwa Beach</h3>
+        <p>Vibrant beach with coral reefs, clear waters, and sunset views.</p>
+      </div>
+    </div>
+    <div class="card reveal">
+      <img src="images/jungle-beach.jpg" alt="Jungle Beach Unawatuna" />
+      <div class="card-body">
+        <h3>Jungle Beach, Unawatuna</h3>
+        <p>Secluded cove with jungle backdrop, perfect for swimming and snorkeling.</p>
+      </div>
+    </div>
+    <div class="card reveal delay-1">
+      <img src="images/nilaveli.jpg" alt="Nilaveli Beach Trincomalee" />
+      <div class="card-body">
+        <h3>Nilaveli Beach, Trincomalee</h3>
+        <p>Quiet and pristine beach with turquoise waters and soft sand.</p>
+      </div>
+    </div>
+    <div class="card reveal delay-2">
+      <img src="images/tangalle.jpg" alt="Tangalle Silent Beach" />
+      <div class="card-body">
+        <h3>Tangalle Silent Beach</h3>
+        <p>Peaceful and hidden beach surrounded by palm trees, ideal for relaxing.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
 
     <!-- ===== Photo Gallery ===== -->
     <section class="section reveal">
@@ -156,7 +257,6 @@
   <p class="footer-copy">© 2025 Buwana Tours & Travels. All rights reserved.</p>
 </footer>
 
-
-  <script src="script.js"></script>
+<script src="script.js"></script>
 </body>
 </html>

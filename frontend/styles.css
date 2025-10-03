@@ -111,6 +111,25 @@ nav a.active{background:rgba(0,0,0,.25)}
 .card:hover{transform:translateY(-6px) scale(1.01); box-shadow:0 12px 32px rgba(0,0,0,.2);}
 .card.selected{outline:3px solid var(--orange); background:#fff5ea;}
 
+/* Expandable Hiking Card hint */
+#hikingCard h3 {
+  cursor: pointer;
+}
+#hikingCard p {
+  font-style: italic;
+  color: var(--gray);
+}
+
+/* Expandable Beach Card hint */
+#beachCard h3 {
+  cursor: pointer;
+}
+#beachCard p {
+  font-style: italic;
+  color: var(--gray);
+}
+
+
 /* Selected note */
 .selected-note{
   margin-top:1rem; display:flex; gap:.8rem; align-items:center; flex-wrap:wrap;

@@ -228,3 +228,36 @@ if(startDate && endDate){
     endDate.min = startDate.value;
   });
 }
+
+// ===== Hiking Card Toggle =====
+const hikingCard = document.getElementById('hikingCard');
+const hikesList = document.getElementById('hikesList');
+
+if(hikingCard && hikesList){
+  hikingCard.addEventListener('click', () => {
+    if(hikesList.style.display === 'none'){
+      hikesList.style.display = 'grid';
+      hikingCard.querySelector('p').textContent = 'Click again to hide the hikes.';
+    } else {
+      hikesList.style.display = 'none';
+      hikingCard.querySelector('p').textContent = 'Click to explore the most scenic trails in Sri Lanka.';
+    }
+  });
+}
+
+// ===== Scenic Beaches Card Toggle =====
+const beachCard = document.getElementById('beachCard');
+const beachesList = document.getElementById('beachesList');
+
+if(beachCard && beachesList){
+  beachCard.addEventListener('click', () => {
+    if(beachesList.style.display === 'none'){
+      beachesList.style.display = 'grid';
+      beachCard.querySelector('p').textContent = 'Click again to hide the beaches.';
+    } else {
+      beachesList.style.display = 'none';
+      beachCard.querySelector('p').textContent = 'Click to explore Sri Lanka’s most scenic beaches.';
+    }
+  });
+}
+
