@@ -17,7 +17,12 @@ const selectedNote = document.getElementById('selectedNote');
 const selectedPkgSpan = document.getElementById('selectedPackage');
 
 cards.forEach(card => {
-  card.addEventListener('click', () => {
+  card.addEventListener('click', (e) => {
+    // Prevent navigation if clicking the select button
+    if (e.target.classList.contains('select-btn')) {
+      return;
+    }
+    
     cards.forEach(c => c.classList.remove('selected'));
     card.classList.add('selected');
 
@@ -31,11 +36,19 @@ cards.forEach(card => {
   });
 });
 
-// Also wire explicit "Select" buttons
+// Wire explicit "Select" buttons to navigate to contact page
 document.querySelectorAll('.select-btn').forEach(btn => {
   btn.addEventListener('click', (e) => {
     e.stopPropagation();
-    btn.closest('.card')?.click();
+    const card = btn.closest('.card');
+    if (card) {
+      const packageName = card.dataset.package || card.querySelector('h3')?.textContent || '';
+      try {
+        localStorage.setItem('buwana_selected_package', packageName);
+      } catch {}
+      // Navigate to contact page
+      window.location.href = 'contact.html';
+    }
   });
 });
 
@@ -51,7 +64,6 @@ function loadReviews() {
   } catch {}
 }
 
-// ✅ Updated: now shows country with name
 function addReviewDOM({ name, rating, text, country }) {
   const div = document.createElement('div');
   div.className = 'review';
@@ -78,10 +90,10 @@ if (reviewForm) {
     const name = document.getElementById('name').value.trim();
     const rating = parseInt(document.getElementById('rating').value, 10);
     const text = document.getElementById('review').value.trim();
-    const country = document.getElementById('country').value; // ✅ get country
+    const country = document.getElementById('country').value;
     if (!name || !text || !rating) return;
 
-    const entry = { name, rating, text, country }; // ✅ include country
+    const entry = { name, rating, text, country };
     addReviewDOM(entry);
 
     try {
@@ -94,7 +106,7 @@ if (reviewForm) {
   });
 }
 
-// ------- Populate country dropdown (Review Form) -------
+// ------- Populate country dropdown (Review Form)
 const countrySelect = document.getElementById("country");
 if (countrySelect) {
   const countries = [
@@ -128,7 +140,6 @@ if (countrySelect) {
     `<option value="">Select your country</option>` +
     countries.map(c => `<option value="${c}">${c}</option>`).join("");
 }
-
 
 // ------- Contact form (with backend)
 const contactForm = document.getElementById('contactForm');
@@ -166,14 +177,34 @@ if (contactForm) {
     }
   });
 
-  // Pre-select package if any
+  // Pre-select package if any (fixed to match exact option text)
   try {
     const sel = localStorage.getItem('buwana_selected_package');
     if (sel) {
-      const select = contactForm.querySelector('select[name="interest"]');
-      if (select) {
-        const found = Array.from(select.options).find(o => o.textContent === sel);
-        if (found) select.value = found.value;
+      const interestSelect = document.getElementById('con-interest');
+      if (interestSelect) {
+        // Map package names to dropdown option text
+        const packageMap = {
+          'Airport Pickups & Drops': 'Airport Pickups & Drops',
+          'Sigiriya & Dambulla': 'Sigiriya & Dambulla',
+          'Sigiriya (Dambulla) & Minneriya': 'Sigiriya & Dambulla',
+          'Yala Safari Adventure': 'Yala Safari Adventure',
+          'Mirissa Beach Escape': 'Mirissa Beach Escape',
+          'Ella Highlands Retreat': 'Ella Highlands Retreat',
+          'Ella Highlands Retreat & Flying Ravana': 'Ella Highlands Retreat'
+        };
+        
+        const mappedValue = packageMap[sel] || sel;
+        
+        // Find and select the matching option
+        Array.from(interestSelect.options).forEach(option => {
+          if (option.textContent.trim() === mappedValue || option.value === mappedValue) {
+            interestSelect.value = option.value;
+          }
+        });
+        
+        // Clear the localStorage after using it
+        localStorage.removeItem('buwana_selected_package');
       }
     }
   } catch {}
