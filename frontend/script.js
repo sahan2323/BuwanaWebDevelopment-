@@ -51,14 +51,15 @@ function loadReviews() {
   } catch {}
 }
 
-function addReviewDOM({ name, rating, text }) {
+// ✅ Updated: now shows country with name
+function addReviewDOM({ name, rating, text, country }) {
   const div = document.createElement('div');
   div.className = 'review';
   const stars = '★★★★★'.slice(0, rating) + '☆☆☆☆☆'.slice(0, 5 - rating);
   div.innerHTML = `
     <div class="stars" aria-label="${rating} stars">${stars}</div>
     <p>${escapeHTML(text)}</p>
-    <span class="author">— ${escapeHTML(name)}</span>
+    <span class="author">— ${escapeHTML(name)}${country ? `, ${escapeHTML(country)}` : ''}</span>
   `;
   reviewsWrap.appendChild(div);
 }
@@ -77,9 +78,10 @@ if (reviewForm) {
     const name = document.getElementById('name').value.trim();
     const rating = parseInt(document.getElementById('rating').value, 10);
     const text = document.getElementById('review').value.trim();
+    const country = document.getElementById('country').value; // ✅ get country
     if (!name || !text || !rating) return;
 
-    const entry = { name, rating, text };
+    const entry = { name, rating, text, country }; // ✅ include country
     addReviewDOM(entry);
 
     try {
@@ -91,6 +93,42 @@ if (reviewForm) {
     reviewForm.reset();
   });
 }
+
+// ------- Populate country dropdown (Review Form) -------
+const countrySelect = document.getElementById("country");
+if (countrySelect) {
+  const countries = [
+    "Afghanistan","Albania","Algeria","Andorra","Angola","Antigua and Barbuda","Argentina","Armenia","Australia","Austria","Azerbaijan",
+    "Bahamas","Bahrain","Bangladesh","Barbados","Belarus","Belgium","Belize","Benin","Bhutan","Bolivia","Bosnia and Herzegovina","Botswana","Brazil","Brunei","Bulgaria","Burkina Faso","Burundi",
+    "Cambodia","Cameroon","Canada","Cape Verde","Central African Republic","Chad","Chile","China","Colombia","Comoros","Congo (Brazzaville)","Congo (Kinshasa)","Costa Rica","Croatia","Cuba","Cyprus","Czech Republic",
+    "Denmark","Djibouti","Dominica","Dominican Republic",
+    "East Timor","Ecuador","Egypt","El Salvador","Equatorial Guinea","Eritrea","Estonia","Eswatini","Ethiopia",
+    "Fiji","Finland","France",
+    "Gabon","Gambia","Georgia","Germany","Ghana","Greece","Grenada","Guatemala","Guinea","Guinea-Bissau","Guyana",
+    "Haiti","Honduras","Hungary",
+    "Iceland","India","Indonesia","Iran","Iraq","Ireland","Israel","Italy",
+    "Jamaica","Japan","Jordan",
+    "Kazakhstan","Kenya","Kiribati","Korea, North","Korea, South","Kosovo","Kuwait","Kyrgyzstan",
+    "Laos","Latvia","Lebanon","Lesotho","Liberia","Libya","Liechtenstein","Lithuania","Luxembourg",
+    "Madagascar","Malawi","Malaysia","Maldives","Mali","Malta","Marshall Islands","Mauritania","Mauritius","Mexico","Micronesia","Moldova","Monaco","Mongolia","Montenegro","Morocco","Mozambique","Myanmar",
+    "Namibia","Nauru","Nepal","Netherlands","New Zealand","Nicaragua","Niger","Nigeria","North Macedonia","Norway",
+    "Oman",
+    "Pakistan","Palau","Palestine","Panama","Papua New Guinea","Paraguay","Peru","Philippines","Poland","Portugal",
+    "Qatar",
+    "Romania","Russia","Rwanda",
+    "Saint Kitts and Nevis","Saint Lucia","Saint Vincent and the Grenadines","Samoa","San Marino","Sao Tome and Principe","Saudi Arabia","Senegal","Serbia","Seychelles","Sierra Leone","Singapore","Slovakia","Slovenia","Solomon Islands","Somalia","South Africa","Spain","Sri Lanka","Sudan","Sudan, South","Suriname","Sweden","Switzerland","Syria",
+    "Taiwan","Tajikistan","Tanzania","Thailand","Togo","Tonga","Trinidad and Tobago","Tunisia","Turkey","Turkmenistan","Tuvalu",
+    "Uganda","Ukraine","United Arab Emirates","United Kingdom","United States","Uruguay","Uzbekistan",
+    "Vanuatu","Vatican City","Venezuela","Vietnam",
+    "Yemen",
+    "Zambia","Zimbabwe"
+  ];
+
+  countrySelect.innerHTML =
+    `<option value="">Select your country</option>` +
+    countries.map(c => `<option value="${c}">${c}</option>`).join("");
+}
+
 
 // ------- Contact form (with backend)
 const contactForm = document.getElementById('contactForm');
