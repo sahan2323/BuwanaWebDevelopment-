@@ -186,6 +186,7 @@ if (contactForm) {
         // Map package names to dropdown option text
         const packageMap = {
           'Airport Pickups & Drops': 'Airport Pickups & Drops',
+          'Colombo City Tour': 'Colombo City Tour',
           'Sigiriya & Dambulla': 'Sigiriya & Dambulla',
           'Sigiriya (Dambulla) & Minneriya': 'Sigiriya & Dambulla',
           'Yala Safari Adventure': 'Yala Safari Adventure',
@@ -321,6 +322,7 @@ if (beachCard && beachesList) {
 const promoModal = document.getElementById('promoModal');
 const closePromo = document.getElementById('closePromo');
 const skipPromo = document.getElementById('skipPromo');
+const bookNowPromo = document.getElementById('bookNowPromo');
 
 // Show modal after 1.5 seconds on page load
 if (promoModal) {
@@ -331,6 +333,17 @@ if (promoModal) {
     setTimeout(() => {
       promoModal.classList.add('active');
     }, 1500);
+  }
+  
+  // Book Now button - save to localStorage and navigate
+  if (bookNowPromo) {
+    bookNowPromo.addEventListener('click', () => {
+      try {
+        localStorage.setItem('buwana_selected_package', 'Colombo City Tour');
+      } catch {}
+      sessionStorage.setItem('buwana_promo_closed', 'true');
+      window.location.href = 'contact.html';
+    });
   }
   
   // Close button
