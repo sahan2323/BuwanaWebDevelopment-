@@ -312,6 +312,189 @@ input:focus, select:focus, textarea:focus{
 /* Utilities */
 .center{text-align:center}
 
+/* Colombo City Tour Promo Pop-up Styles */
+.promo-modal {
+  display: none;
+  position: fixed;
+  z-index: 10000;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.75);
+  backdrop-filter: blur(5px);
+  animation: fadeIn 0.3s ease;
+}
+
+.promo-modal.active {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 1rem;
+}
+
+.promo-content {
+  background: #fff;
+  border-radius: 20px;
+  max-width: 500px;
+  width: 100%;
+  position: relative;
+  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+  overflow: hidden;
+  animation: slideUp 0.4s ease;
+}
+
+.promo-close {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  background: rgba(0, 0, 0, 0.7);
+  color: #fff;
+  border: none;
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  font-size: 1.8rem;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 10;
+  transition: all 0.2s ease;
+  line-height: 1;
+  padding: 0;
+}
+
+.promo-close:hover {
+  background: var(--orange);
+  transform: rotate(90deg) scale(1.1);
+}
+
+.promo-badge {
+  position: absolute;
+  top: 20px;
+  left: 20px;
+  background: var(--orange);
+  color: #fff;
+  padding: 0.4rem 0.8rem;
+  border-radius: 20px;
+  font-size: 0.75rem;
+  font-weight: 700;
+  letter-spacing: 0.5px;
+  z-index: 5;
+  box-shadow: 0 4px 12px rgba(255, 106, 0, 0.4);
+}
+
+.promo-image {
+  width: 100%;
+  height: 250px;
+  object-fit: cover;
+  display: block;
+}
+
+.promo-body {
+  padding: 1.5rem;
+  text-align: center;
+}
+
+.promo-body h2 {
+  color: var(--orange-dark);
+  margin: 0 0 0.5rem;
+  font-size: 1.8rem;
+}
+
+.promo-description {
+  color: #555;
+  margin: 0 0 1rem;
+  font-size: 0.95rem;
+  line-height: 1.5;
+}
+
+.promo-pricing {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.8rem;
+  margin: 1rem 0;
+  flex-wrap: wrap;
+}
+
+.promo-old-price {
+  font-size: 1.3rem;
+  color: #999;
+  text-decoration: line-through;
+  font-weight: 600;
+}
+
+.promo-new-price {
+  font-size: 2.2rem;
+  color: var(--orange);
+  font-weight: 700;
+}
+
+.promo-discount {
+  background: #00c853;
+  color: #fff;
+  padding: 0.3rem 0.6rem;
+  border-radius: 8px;
+  font-size: 0.85rem;
+  font-weight: 700;
+}
+
+.promo-highlights {
+  color: #666;
+  font-size: 0.9rem;
+  margin: 1rem 0 1.5rem;
+  line-height: 1.6;
+}
+
+.promo-actions {
+  display: flex;
+  gap: 0.8rem;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+.promo-btn {
+  background: var(--orange);
+  flex: 1;
+  min-width: 140px;
+}
+
+.promo-btn:hover {
+  background: var(--orange-dark);
+}
+
+.promo-skip {
+  flex: 1;
+  min-width: 140px;
+  background: transparent;
+  color: #666;
+  border: 2px solid #ddd;
+}
+
+.promo-skip:hover {
+  background: #f5f5f5;
+  color: #333;
+  border-color: #ccc;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+@keyframes slideUp {
+  from { 
+    opacity: 0;
+    transform: translateY(30px) scale(0.95);
+  }
+  to { 
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
 /* Responsive - Mobile Optimizations */
 @media (max-width: 900px){
   .contact-grid{grid-template-columns:1fr;}
@@ -409,6 +592,36 @@ input:focus, select:focus, textarea:focus{
   
   .social-links{
     justify-content: center;
+  }
+  
+  /* Promo Modal Mobile */
+  .promo-content {
+    max-width: 95%;
+    border-radius: 16px;
+  }
+  
+  .promo-image {
+    height: 200px;
+  }
+  
+  .promo-body {
+    padding: 1.2rem;
+  }
+  
+  .promo-body h2 {
+    font-size: 1.5rem;
+  }
+  
+  .promo-new-price {
+    font-size: 1.8rem;
+  }
+  
+  .promo-actions {
+    flex-direction: column;
+  }
+  
+  .promo-btn, .promo-skip {
+    width: 100%;
   }
 }
 

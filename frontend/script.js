@@ -316,3 +316,52 @@ if (beachCard && beachesList) {
     beachesList.style.display = beachesList.style.display === "none" ? "grid" : "none";
   });
 }
+
+// ------- Colombo City Tour Promo Pop-up
+const promoModal = document.getElementById('promoModal');
+const closePromo = document.getElementById('closePromo');
+const skipPromo = document.getElementById('skipPromo');
+
+// Show modal after 1.5 seconds on page load
+if (promoModal) {
+  // Check if user has already seen/closed the promo in this session
+  const promoClosed = sessionStorage.getItem('buwana_promo_closed');
+  
+  if (!promoClosed) {
+    setTimeout(() => {
+      promoModal.classList.add('active');
+    }, 1500);
+  }
+  
+  // Close button
+  if (closePromo) {
+    closePromo.addEventListener('click', () => {
+      promoModal.classList.remove('active');
+      sessionStorage.setItem('buwana_promo_closed', 'true');
+    });
+  }
+  
+  // Maybe Later button
+  if (skipPromo) {
+    skipPromo.addEventListener('click', () => {
+      promoModal.classList.remove('active');
+      sessionStorage.setItem('buwana_promo_closed', 'true');
+    });
+  }
+  
+  // Close when clicking outside the modal
+  promoModal.addEventListener('click', (e) => {
+    if (e.target === promoModal) {
+      promoModal.classList.remove('active');
+      sessionStorage.setItem('buwana_promo_closed', 'true');
+    }
+  });
+  
+  // Close with Escape key
+  document.addEventListener('keydown', (e) => {
+    if (e.key === 'Escape' && promoModal.classList.contains('active')) {
+      promoModal.classList.remove('active');
+      sessionStorage.setItem('buwana_promo_closed', 'true');
+    }
+  });
+}
