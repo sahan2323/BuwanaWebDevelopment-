@@ -1,3 +1,105 @@
+// ------- Back to Top Button
+const backToTopBtn = document.getElementById('backToTop');
+
+window.addEventListener('scroll', () => {
+  if (window.pageYOffset > 300) {
+    backToTopBtn.classList.add('visible');
+  } else {
+    backToTopBtn.classList.remove('visible');
+  }
+});
+
+if (backToTopBtn) {
+  backToTopBtn.addEventListener('click', () => {
+    window.scrollTo({
+      top: 0,
+      behavior: 'smooth'
+    });
+  });
+}
+
+// ------- Hero Slideshow
+const slides = document.querySelectorAll('.hero-slide');
+const dots = document.querySelectorAll('.slide-dot');
+const prevBtn = document.querySelector('.slide-arrow.prev');
+const nextBtn = document.querySelector('.slide-arrow.next');
+let currentSlide = 0;
+let slideInterval;
+
+function showSlide(index) {
+  slides.forEach(slide => slide.classList.remove('active'));
+  dots.forEach(dot => dot.classList.remove('active'));
+
+  if (index >= slides.length) currentSlide = 0;
+  else if (index < 0) currentSlide = slides.length - 1;
+  else currentSlide = index;
+
+  slides[currentSlide].classList.add('active');
+  dots[currentSlide].classList.add('active');
+}
+
+function nextSlide() {
+  showSlide(currentSlide + 1);
+}
+
+function prevSlide() {
+  showSlide(currentSlide - 1);
+}
+
+function startSlideshow() {
+  slideInterval = setInterval(nextSlide, 5000);
+}
+
+function stopSlideshow() {
+  clearInterval(slideInterval);
+}
+
+if (nextBtn) {
+  nextBtn.addEventListener('click', () => {
+    nextSlide();
+    stopSlideshow();
+    startSlideshow();
+  });
+}
+
+if (prevBtn) {
+  prevBtn.addEventListener('click', () => {
+    prevSlide();
+    stopSlideshow();
+    startSlideshow();
+  });
+}
+
+dots.forEach((dot, index) => {
+  dot.addEventListener('click', () => {
+    showSlide(index);
+    stopSlideshow();
+    startSlideshow();
+  });
+});
+
+const heroSection = document.querySelector('.hero');
+if (heroSection) {
+  heroSection.addEventListener('mouseenter', stopSlideshow);
+  heroSection.addEventListener('mouseleave', startSlideshow);
+}
+
+if (slides.length > 0) {
+  startSlideshow();
+}
+
+document.addEventListener('keydown', (e) => {
+  if (e.key === 'ArrowLeft') {
+    prevSlide();
+    stopSlideshow();
+    startSlideshow();
+  } else if (e.key === 'ArrowRight') {
+    nextSlide();
+    stopSlideshow();
+    startSlideshow();
+  }
+});
+
 // ------- Scroll Reveal (Intersection Observer)
 const revealEls = document.querySelectorAll('.reveal');
 const observer = new IntersectionObserver((entries) => {
@@ -10,6 +112,8 @@ const observer = new IntersectionObserver((entries) => {
 }, { threshold: 0.15 });
 
 revealEls.forEach(el => observer.observe(el));
+
+
 
 // ------- Clickable Cards: "Select" + highlight + note
 const cards = document.querySelectorAll('.card.clickable');

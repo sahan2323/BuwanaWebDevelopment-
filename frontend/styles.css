@@ -46,20 +46,202 @@ nav a{
 nav a:hover{background:rgba(0,0,0,.15); transform:translateY(-1px)}
 nav a.active{background:rgba(0,0,0,.25)}
 
-/* Hero */
-.hero{
-  position:relative; 
-  min-height:70vh; 
-  display:grid; 
-  place-items:center; 
-  text-align:center; 
-  color:#fff;
-  background: linear-gradient(180deg, rgba(0,0,0,.45), rgba(0,0,0,.45)), 
-              url('hero-srilanka.jpg') no-repeat center center/cover;
-  background-attachment: fixed; 
-  animation: heroZoom 8s ease-in-out forwards;
+/* WhatsApp Floating Button */
+.whatsapp-float {
+  position: fixed;
+  bottom: 30px;
+  right: 30px;
+  background: #25D366;
+  color: white;
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 2rem;
+  box-shadow: 0 4px 20px rgba(37, 211, 102, 0.4);
+  z-index: 1000;
+  transition: all 0.3s ease;
+  animation: whatsappPulse 2s infinite;
 }
-.hero-inner{max-width:900px; padding:3rem 1rem}
+
+.whatsapp-float:hover {
+  transform: scale(1.1);
+  box-shadow: 0 6px 30px rgba(37, 211, 102, 0.6);
+}
+
+@keyframes whatsappPulse {
+  0%, 100% {
+    box-shadow: 0 4px 20px rgba(37, 211, 102, 0.4);
+  }
+  50% {
+    box-shadow: 0 4px 30px rgba(37, 211, 102, 0.7);
+  }
+}
+
+/* Back to Top Button */
+.back-to-top {
+  position: fixed;
+  bottom: 100px;
+  right: 30px;
+  background: var(--orange);
+  color: white;
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  border: none;
+  display: none;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.3rem;
+  cursor: pointer;
+  box-shadow: 0 4px 20px rgba(255, 106, 0, 0.4);
+  z-index: 999;
+  transition: all 0.3s ease;
+}
+
+.back-to-top.visible {
+  display: flex;
+}
+
+.back-to-top:hover {
+  background: var(--orange-dark);
+  transform: translateY(-3px);
+  box-shadow: 0 6px 30px rgba(255, 106, 0, 0.6);
+}
+
+/* Hero Slideshow */
+.hero {
+  position: relative;
+  min-height: 70vh;
+  display: grid;
+  place-items: center;
+  text-align: center;
+  color: #fff;
+  overflow: hidden;
+}
+
+.hero-slideshow {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 0;
+}
+
+.hero-slide {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  opacity: 0;
+  transition: opacity 1.5s ease-in-out;
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+
+.hero-slide.active {
+  opacity: 1;
+  animation: kenBurns 8s ease-out forwards;
+}
+
+.hero-slide::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(180deg, rgba(0,0,0,.45), rgba(0,0,0,.45));
+  z-index: 1;
+}
+
+@keyframes kenBurns {
+  0% {
+    transform: scale(1.1);
+  }
+  100% {
+    transform: scale(1);
+  }
+}
+
+/* Slideshow Controls */
+.slideshow-controls {
+  position: absolute;
+  bottom: 30px;
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  gap: 12px;
+  z-index: 10;
+}
+
+.slide-dot {
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.5);
+  border: 2px solid rgba(255, 255, 255, 0.8);
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.slide-dot:hover {
+  background: rgba(255, 255, 255, 0.8);
+  transform: scale(1.2);
+}
+
+.slide-dot.active {
+  background: var(--orange);
+  border-color: var(--orange);
+  width: 32px;
+  border-radius: 6px;
+}
+
+/* Navigation Arrows */
+.slide-arrow {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  background: rgba(0, 0, 0, 0.5);
+  color: white;
+  border: none;
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  font-size: 1.5rem;
+  cursor: pointer;
+  z-index: 10;
+  transition: all 0.3s ease;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.slide-arrow:hover {
+  background: var(--orange);
+  transform: translateY(-50%) scale(1.1);
+}
+
+.slide-arrow.prev {
+  left: 20px;
+}
+
+.slide-arrow.next {
+  right: 20px;
+}
+
+.hero-inner {
+  position: relative;
+  z-index: 5;
+  max-width: 900px;
+  padding: 3rem 1rem;
+}
+
 .hero h1{
   font-size:clamp(1.8rem, 3vw, 3rem); 
   margin:0 0 .6rem;
@@ -80,12 +262,8 @@ nav a.active{background:rgba(0,0,0,.25)}
 .gradient-edge{
   position:absolute; inset:auto 0 0 0; height:40px;
   background: linear-gradient(180deg, transparent, var(--cream));
+  z-index: 5;
 }
-@keyframes heroZoom {
-  from { background-size: 110%; }
-  to   { background-size: 100%; }
-}
-
 /* Buttons */
 .btn{
   display:inline-block; border:none; background:var(--black); color:#fff;

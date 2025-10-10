@@ -11,6 +11,19 @@
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"> <!--For social media logos-->
 </head>
 <body>
+  <!-- WhatsApp Floating Button -->
+  <a href="https://wa.me/94777886698?text=Hi%20Buwana%20Tours!%20I'm%20interested%20in%20your%20services." 
+     class="whatsapp-float" 
+     target="_blank" 
+     aria-label="Contact us on WhatsApp">
+    <i class="fab fa-whatsapp"></i>
+  </a>
+
+  <!-- Back to Top Button -->
+  <button class="back-to-top" id="backToTop" aria-label="Back to top">
+    <i class="fas fa-arrow-up"></i>
+  </button>
+
   <!-- Colombo City Tour Pop-up -->
   <div id="promoModal" class="promo-modal">
     <div class="promo-content">
@@ -54,8 +67,21 @@
     </nav>
   </header>
 
-  <!-- ===== Hero ===== -->
-  <section class="hero" style="background: url('images/hero-sri\ lanka.jpg') no-repeat center center/cover;">
+  <!-- ===== Hero Slideshow ===== -->
+  <section class="hero">
+    <!-- Slideshow Container -->
+    <div class="hero-slideshow">
+      <div class="hero-slide active" style="background-image: url('images/hero-sri\ lanka.jpg');"></div>
+      <div class="hero-slide" style="background-image: url('images/hero2.jpg');"></div>
+      <div class="hero-slide" style="background-image: url('images/hero3.jpg');"></div>
+      <div class="hero-slide" style="background-image: url('images/hero4.jpg');"></div>
+    </div>
+
+    <!-- Navigation Arrows -->
+    <button class="slide-arrow prev" aria-label="Previous slide">‹</button>
+    <button class="slide-arrow next" aria-label="Next slide">›</button>
+
+    <!-- Hero Content -->
     <div class="hero-inner">
       <h1 class="reveal">Step Into the Most Beautiful Island on Earth</h1>
       <p class="reveal delay-1">From misty hills to golden beaches — travel Sri Lanka the easy way.</p>
@@ -64,6 +90,15 @@
         <a href="services.html" class="btn btn-outline">Our Services</a>
       </div>
     </div>
+
+    <!-- Slideshow Dots -->
+    <div class="slideshow-controls">
+      <span class="slide-dot active" data-slide="0"></span>
+      <span class="slide-dot" data-slide="1"></span>
+      <span class="slide-dot" data-slide="2"></span>
+      <span class="slide-dot" data-slide="3"></span>
+    </div>
+
     <div class="gradient-edge"></div>
   </section>
 
