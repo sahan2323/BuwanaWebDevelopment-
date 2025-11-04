@@ -1,3 +1,324 @@
+// Package Details Data
+const packageDetails = {
+  'Airport Pickups & Drops': {
+    image: 'images/airport.jpg',
+    title: 'Airport Pickups & Drops',
+    description: 'Professional 24/7 airport transfer service from Bandaranaike International Airport (BIA) to any destination in Sri Lanka.',
+    price: 'From $50',
+    vehicles: [
+      'Comfortable air-conditioned cars',
+      '9-seater & 14-seater vans available',
+      '28-seater coaches for large groups',
+      'All vehicles are well-maintained and insured'
+    ],
+    included: [
+      'Meet & greet with name board',
+      'English-speaking driver',
+      'Toll fees & parking charges',
+      'Paging fees included',
+      'Flight tracking for delays',
+      'Bottled water provided',
+      '24/7 availability'
+    ],
+    notIncluded: [
+      'Personal expenses',
+      'Meals (unless specified)',
+      'Accommodation charges'
+    ],
+    destinations: [
+      'Colombo City - $50',
+      'Negombo - $25',
+      'Kandy - $85',
+      'Galle - $120',
+      'Ella - $150',
+      'Any location (custom quote)'
+    ]
+  },
+  'Sigiriya & Dambulla': {
+    image: 'images/sigiriya.jpg',
+    title: 'Sigiriya, Dambulla & Minneriya Safari',
+    description: 'Explore two UNESCO World Heritage sites and witness the famous elephant gathering at Minneriya National Park.',
+    price: 'From $300',
+    vehicles: [
+      'Air-conditioned SUVs or vans',
+      'Safari jeeps for Minneriya',
+      'Professional tour guides',
+      'Comfortable seating for all group sizes'
+    ],
+    included: [
+      'Hotel pickup & drop-off',
+      'English-speaking guide',
+      'Sigiriya Rock Fortress entrance',
+      'Dambulla Cave Temple entrance',
+      'Minneriya Safari jeep & tracker',
+      'Bottled water throughout',
+      'All government taxes'
+    ],
+    notIncluded: [
+      'Meals (lunch can be arranged)',
+      'Personal expenses',
+      'Tips & gratuities',
+      'Video/camera permits at sites'
+    ],
+    destinations: [
+      'Sigiriya Rock Fortress - Lion Rock climb',
+      'Dambulla Golden Temple - Ancient cave temples',
+      'Minneriya National Park - Elephant safari',
+      'Village tour experience (optional)',
+      'Ayurvedic spice garden visit (optional)'
+    ]
+  },
+  'Yala Safari Adventure': {
+    image: 'images/yala.jpg',
+    title: 'Yala Safari Adventure',
+    description: 'Experience thrilling wildlife encounters in Yala National Park, home to the highest density of leopards in the world.',
+    price: 'From $350',
+    vehicles: [
+      'Private 4x4 safari jeeps',
+      'Experienced wildlife trackers',
+      'Open-top vehicles for best viewing',
+      'Safety equipment provided'
+    ],
+    included: [
+      'Hotel pickup & drop-off',
+      'Private safari jeep',
+      'Experienced tracker/driver',
+      'Park entrance fees',
+      'Morning & evening safari options',
+      'Binoculars provided',
+      'Bottled water & refreshments'
+    ],
+    notIncluded: [
+      'Meals (breakfast boxes available)',
+      'Personal expenses',
+      'Tips for tracker',
+      'Accommodation (can be arranged)'
+    ],
+    destinations: [
+      'Yala National Park Block 1',
+      'Leopard tracking zones',
+      'Elephant herds viewing areas',
+      'Sloth bear habitats',
+      'Crocodile lake',
+      'Bird watching hotspots',
+      'Scenic viewpoints & photo stops'
+    ]
+  },
+  'Mirissa Beach Escape': {
+    image: 'images/mirissa.jpg',
+    title: 'Mirissa Beach Escape',
+    description: 'Relax on golden sands, go whale watching, and experience the vibrant south coast beach life.',
+    price: 'From $210',
+    vehicles: [
+      'Comfortable air-conditioned vehicles',
+      'Beach-ready transport',
+      'Flexible itinerary options',
+      'Direct transfers or sightseeing routes'
+    ],
+    included: [
+      'Hotel pickup & drop-off',
+      'English-speaking driver',
+      'Coconut Tree Hill visit',
+      'Secret beach access',
+      'Beach time & relaxation',
+      'Local restaurant recommendations',
+      'Sunset viewpoints'
+    ],
+    notIncluded: [
+      'Whale watching tour ($40-50 extra)',
+      'Meals & drinks',
+      'Water sports activities',
+      'Accommodation',
+      'Personal expenses'
+    ],
+    destinations: [
+      'Mirissa Main Beach',
+      'Coconut Tree Hill - Iconic photo spot',
+      'Secret Beach - Hidden gem',
+      'Parrot Rock viewpoint',
+      'Whale watching departure point',
+      'Beach bars & restaurants',
+      'Nearby Weligama Bay (optional)'
+    ]
+  },
+  'Ella Highlands Retreat': {
+    image: 'images/ella.jpg',
+    title: 'Ella Highlands Retreat & Flying Ravana',
+    description: 'Experience the breathtaking hill country with tea plantations, scenic hikes, and adventure activities.',
+    price: 'From $420',
+    vehicles: [
+      'Mountain-ready SUVs',
+      'Comfortable seating for winding roads',
+      'Experienced hill country drivers',
+      'Climate-controlled vehicles'
+    ],
+    included: [
+      'Hotel pickup & drop-off',
+      'English-speaking guide',
+      'Nine Arches Bridge visit',
+      'Little Adam\'s Peak hike guidance',
+      'Flying Ravana adventure park entry',
+      'Tea plantation & factory tour',
+      'Scenic train ride coordination (optional)',
+      'Bottled water & snacks'
+    ],
+    notIncluded: [
+      'Meals (local restaurants available)',
+      'Adventure activity extras',
+      'Ravana Falls swimming (free)',
+      'Personal expenses',
+      'Accommodation'
+    ],
+    destinations: [
+      'Nine Arches Bridge - Railway marvel',
+      'Little Adam\'s Peak - Easy 1-hour hike',
+      'Ella Rock - Challenging hike (optional)',
+      'Flying Ravana Mega Zipline',
+      'Tea plantation & factory',
+      'Ravana Falls',
+      'Ella town & viewpoints',
+      'Demodara Loop - Engineering wonder'
+    ]
+  }
+};
+
+// ------- Hamburger Menu Toggle
+const hamburger = document.getElementById('hamburger');
+const mobileMenu = document.getElementById('mobileMenu');
+
+if (hamburger && mobileMenu) {
+  hamburger.addEventListener('click', () => {
+    hamburger.classList.toggle('active');
+    mobileMenu.classList.toggle('active');
+    document.body.style.overflow = mobileMenu.classList.contains('active') ? 'hidden' : '';
+  });
+
+  // Close mobile menu when clicking a link
+  mobileMenu.querySelectorAll('a').forEach(link => {
+    link.addEventListener('click', () => {
+      hamburger.classList.remove('active');
+      mobileMenu.classList.remove('active');
+      document.body.style.overflow = '';
+    });
+  });
+
+  // Close mobile menu when clicking outside
+  mobileMenu.addEventListener('click', (e) => {
+    if (e.target === mobileMenu) {
+      hamburger.classList.remove('active');
+      mobileMenu.classList.remove('active');
+      document.body.style.overflow = '';
+    }
+  });
+}
+
+// ------- Package Detail Modals
+function openPackageModal(packageName) {
+  const details = packageDetails[packageName];
+  if (!details) return;
+
+  const modalHTML = `
+    <div class="package-modal active" id="packageModal">
+      <div class="modal-content">
+        <button class="modal-close" onclick="closePackageModal()">&times;</button>
+        
+        <div class="modal-header" style="background-image: url('${details.image}')">
+          <h2>${details.title}</h2>
+        </div>
+        
+        <div class="modal-body">
+          <div class="modal-section">
+            <p style="font-size: 1.05rem; line-height: 1.7; color: #555;">${details.description}</p>
+          </div>
+
+          <div class="modal-pricing">
+            <div class="price-label">Starting Price</div>
+            <div class="price-amount">${details.price}</div>
+            <div class="price-note">Price varies by group size and customization</div>
+          </div>
+
+          <div class="modal-section">
+            <h3><i class="fas fa-car"></i> Vehicles</h3>
+            <ul class="modal-list">
+              ${details.vehicles.map(item => `<li><i class="fas fa-check-circle"></i> ${item}</li>`).join('')}
+            </ul>
+          </div>
+
+          <div class="modal-section">
+            <h3><i class="fas fa-check"></i> What's Included</h3>
+            <ul class="modal-list">
+              ${details.included.map(item => `<li><i class="fas fa-check"></i> ${item}</li>`).join('')}
+            </ul>
+          </div>
+
+          <div class="modal-section">
+            <h3><i class="fas fa-times-circle"></i> Not Included</h3>
+            <ul class="modal-list">
+              ${details.notIncluded.map(item => `<li><i class="fas fa-times"></i> ${item}</li>`).join('')}
+            </ul>
+          </div>
+
+          <div class="modal-section">
+            <h3><i class="fas fa-map-marker-alt"></i> Destinations & Highlights</h3>
+            <ul class="modal-list">
+              ${details.destinations.map(item => `<li><i class="fas fa-location-dot"></i> ${item}</li>`).join('')}
+            </ul>
+          </div>
+
+          <div class="modal-actions">
+            <a href="contact.html" class="btn" onclick="selectPackage('${packageName}')">Book This Package</a>
+            <button class="btn btn-outline" onclick="closePackageModal()">Close</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  `;
+
+  document.body.insertAdjacentHTML('beforeend', modalHTML);
+  document.body.style.overflow = 'hidden';
+
+  // Close on escape key
+  document.addEventListener('keydown', escapeKeyHandler);
+}
+
+function closePackageModal() {
+  const modal = document.getElementById('packageModal');
+  if (modal) {
+    modal.remove();
+    document.body.style.overflow = '';
+    document.removeEventListener('keydown', escapeKeyHandler);
+  }
+}
+
+function escapeKeyHandler(e) {
+  if (e.key === 'Escape') {
+    closePackageModal();
+  }
+}
+
+function selectPackage(packageName) {
+  try {
+    localStorage.setItem('buwana_selected_package', packageName);
+  } catch {}
+}
+
+// Add click handlers to package cards
+document.addEventListener('DOMContentLoaded', () => {
+  const packageCards = document.querySelectorAll('.card.clickable[data-package]');
+  packageCards.forEach(card => {
+    card.addEventListener('click', (e) => {
+      // Don't open modal if clicking the select button
+      if (e.target.classList.contains('select-btn')) {
+        return;
+      }
+      const packageName = card.dataset.package;
+      if (packageName && packageDetails[packageName]) {
+        openPackageModal(packageName);
+      }
+    });
+  });
+});
+
 // ------- Back to Top Button
 const backToTopBtn = document.getElementById('backToTop');
 
@@ -112,8 +433,6 @@ const observer = new IntersectionObserver((entries) => {
 }, { threshold: 0.15 });
 
 revealEls.forEach(el => observer.observe(el));
-
-
 
 // ------- Clickable Cards: "Select" + highlight + note
 const cards = document.querySelectorAll('.card.clickable');
